@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Docker & DevOps Master Guide</title>
+
+<style>
+/* ===== GLOBAL STYLE ===== */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color: #e5e7eb;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    background: #0b1220;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    color: #38bdf8;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 5px 0;
+}
+
+.sidebar a:hover {
+    background: #1e293b;
+    color: #38bdf8;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+section {
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+h1, h2, h3 {
+    color: #38bdf8;
+}
+
+code {
+    background: #000;
+    color: #22c55e;
+    padding: 2px 6px;
+    border-radius: 5px;
+}
+
+pre {
+    background: #020617;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #22c55e;
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(90deg,#0ea5e9,#6366f1);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* ===== BADGE ===== */
+.badge {
+    background: #22c55e;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: black;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+<h2>🐳 DevOps</h2>
+<a href="#intro">Intro</a>
+<a href="#docker">Docker</a>
+<a href="#hub">Docker Hub</a>
+<a href="#daemon">Docker Daemon</a>
+<a href="#commands">Commands</a>
+<a href="#dockerfile">Dockerfile</a>
+<a href="#devops">DevOps Tools</a>
+<a href="#cicd">CI/CD</a>
+<a href="#summary">Summary</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="header">
+<h1>🐳 Docker & DevOps Master Guide</h1>
+<p>Learn Docker like a DevOps Engineer (Real Industry Level Notes)</p>
+</div>
+
+<section id="intro">
+<h2>📌 What is Docker?</h2>
+<p>
+Docker is a platform used to build, ship, and run applications inside containers.
+A container includes everything required to run an application.
+</p>
+<p class="badge">Portable • Lightweight • Fast</p>
+</section>
+
+<section id="docker">
+<h2>🚀 Why Docker?</h2>
+<ul>
+<li>Eliminates "works on my machine" problem</li>
+<li>Faster deployment than VMs</li>
+<li>Scalable microservices architecture</li>
+<li>Used in Kubernetes & CI/CD pipelines</li>
+</ul>
+</section>
+
+<section id="hub">
+<h2>🌐 Docker Hub</h2>
+<p>Docker Hub is a cloud registry to store images.</p>
+
+<pre>
+docker pull nginx
+docker pull ubuntu
+docker pull node
+</pre>
+</section>
+
+<section id="daemon">
+<h2>⚙ Docker Daemon</h2>
+<p>
+Docker Daemon (<code>dockerd</code>) runs in background and manages:
+</p>
+<ul>
+<li>Containers</li>
+<li>Images</li>
+<li>Networks</li>
+<li>Volumes</li>
+</ul>
+</section>
+
+<section id="commands">
+<h2>📦 Docker Commands (Must Know)</h2>
+<pre>
+docker --version
+docker run hello-world
+docker ps
+docker ps -a
+docker stop container_id
+docker rm container_id
+docker images
+docker rmi image_id
+docker logs container_id
+docker exec -it container_id bash
+</pre>
+</section>
+
+<section>
+<h2>🌍 Networking</h2>
+<pre>
+docker network ls
+docker network create mynet
+docker run --network=mynet nginx
+</pre>
+</section>
+
+<section>
+<h2>💾 Volumes</h2>
+<pre>
+docker volume create mydata
+docker run -v mydata:/app ubuntu
+</pre>
+</section>
+
+<section id="dockerfile">
+<h2>🧾 Dockerfile Example</h2>
+<pre>
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 3000
+CMD ["node","app.js"]
+</pre>
+</section>
+
+<section id="devops">
+<h2>🐙 DevOps Tools</h2>
+<ul>
+<li>Git & GitHub</li>
+<li>Docker</li>
+<li>Kubernetes</li>
+<li>Jenkins</li>
+<li>Ansible</li>
+<li>Terraform</li>
+<li>Linux</li>
+</ul>
+</section>
+
+<section id="cicd">
+<h2>⚡ CI/CD Pipeline</h2>
+<pre>
+Code → Build → Test → Docker Image → Deploy → Monitor
+</pre>
+</section>
+
+<section>
+<h2>🔥 Linux + Git + Docker Cheat Sheet</h2>
+<pre>
+# Git
+git init
+git add .
+git commit -m "msg"
+git push origin main
+
+# Linux
+ls
+cd
+pwd
+mkdir project
+rm -rf folder
+
+# Docker
+docker build -t app .
+docker run -d -p 3000:3000 app
+docker push username/app
+</pre>
+</section>
+
+<section id="summary">
+<h2>📌 Summary</h2>
+<p>
+Docker is the backbone of modern DevOps. It helps developers build scalable applications faster using containers.
+</p>
+</section>
+
+</div>
+
+</body>
+</html>
